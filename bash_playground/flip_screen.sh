@@ -16,6 +16,15 @@ xournal &
 xrandr -o inverted
 xsetwacom set 11 rotate half
 
+#Einfügen kontrolliertes Abschalten
+trap '{ 
+	echo "Beenden Flip_Screen";
+        xrandr -o normal;
+        xsetwacom set 11 rotate none;	
+	exit 1; 
+}' INT
+
+
 while [ 1 ]
 	read input
 	do

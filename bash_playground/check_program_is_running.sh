@@ -2,18 +2,18 @@
 
 #Überprüfung, ob ein Programm gerade ausgeführt wird oder nicht
 x=1
-while [ $x -le 5 ]
+pid=`ps -A | grep xournal | awk '{print $1}'` #Auslesen des Programmes
+while [ $x -le 50 ]
   do
-  #Auslesen des Programmes
 
-  #Überprüfen des aktuellen Status
+  stat=`ps -u | grep $pid | awk '{print $8}'`  #Überprüfen des aktuellen Status
 
-  #Ausgabe auf die Konsole
+    #Ausgabe auf die Konsole
+    echo "x:=$x\tpid:=$pid\tstat:=$stat"
+    x=$(( $x+1 ))
+    #Programm im Vordergrung
 
-  #print Programm im Vordergrung
-  echo "x:=$x"
-  x=$(( $x+1 ))
-  #print Programm im Hintergrund
+    #Programm im Hintergrund
 
-  sleep 1 #Warte eine Sekunde, bevor das Programm erneut ausgeführt wird
+    sleep 1 #Warte eine Sekunde, bevor das Programm erneut ausgeführt wird
   done
