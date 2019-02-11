@@ -24,7 +24,9 @@ xsetwacom set $Stylus_ID rotate half
 trap '{ 
 	echo "Beenden Flip_Screen";
         xrandr -o normal;
-        xsetwacom set $Stylus_ID rotate none;	
+        xsetwacom set $Stylus_ID rotate none;
+	kill $pid_florence;
+	kill $pid_xournal;	
 	exit 1; 
 }' INT
 
